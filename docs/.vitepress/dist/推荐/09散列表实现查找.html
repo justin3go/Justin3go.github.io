@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Library | Justin3go's Blog-🖊</title>
+    <meta name="description" content="我的技术博客，用心记录知识碎片，汇总整理程序员知识。">
+    <link rel="stylesheet" href="/assets/style.5c8c63da.css">
+    <link rel="modulepreload" href="/assets/Home.1942f32e.js">
+    <link rel="modulepreload" href="/assets/app.021c7b83.js">
+    <link rel="modulepreload" href="/assets/推荐_09散列表实现查找.md.38d140f2.lean.js">
+    
+    <link rel="icon" href="/ava.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css">
+  <meta name="twitter:title" content="Library | Justin3go&#39;s Blog-🖊">
+  <meta property="og:title" content="Library | Justin3go&#39;s Blog-🖊">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="no-sidebar theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="Justin3go&#39;s Blog-🖊, back to home" data-v-675d8756 data-v-cc01ef16><!----> Justin3go&#39;s Blog-🖊</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/" data-v-b8818f8c>首页 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/汇总分类/" data-v-b8818f8c>汇总分类 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item active" href="/推荐/" data-v-b8818f8c>站长推荐 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://space.bilibili.com/434542518" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>B站 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://github.com/Justin3go" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>GitHub <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/" data-v-b8818f8c>首页 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/汇总分类/" data-v-b8818f8c>汇总分类 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item active" href="/推荐/" data-v-b8818f8c>站长推荐 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://space.bilibili.com/434542518" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>B站 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://github.com/Justin3go" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>GitHub <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h2 id="library" tabindex="-1">Library <a class="header-anchor" href="#library" aria-hidden="true">#</a></h2><div class="language-python"><pre><code><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> time
+</code></pre></div><h2 id="读取数据" tabindex="-1">读取数据 <a class="header-anchor" href="#读取数据" aria-hidden="true">#</a></h2><div class="language-python"><pre><code>df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">&#39;重庆市印刷和记录媒介复制业754.xlsx&#39;</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">&#39;any&#39;</span><span class="token punctuation">)</span>  <span class="token comment"># 去除非数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;表长为：&quot;</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>表长为： 75
+</code></pre><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>ID</th><th>企业名称</th><th>电话</th><th>企业地址</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>万州区永佳路万德印刷厂</td><td>15178905742</td><td>重庆市万州区双河口永佳路325号</td></tr><tr><th>1</th><td>1</td><td>覃彩虹</td><td>13594410133</td><td>重庆市万州区熊家镇古城大道296号</td></tr><tr><th>2</th><td>2</td><td>重庆优得利印刷有限公司</td><td>023-65903102</td><td>重庆市江津区双福工业园1幢1号</td></tr><tr><th>3</th><td>3</td><td>重庆市开州区森美印刷有限公司</td><td>15608330060</td><td>重庆市开州区云枫街道平桥社区桔乡路369号门市</td></tr><tr><th>4</th><td>4</td><td>吕兴华</td><td>13896015224</td><td>重庆市璧山区大路街道天星街23号</td></tr></tbody></table><h2 id="get-nms" tabindex="-1">get_nms <a class="header-anchor" href="#get-nms" aria-hidden="true">#</a></h2><div class="language-python"><pre><code><span class="token keyword">def</span> <span class="token function">get_nums</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&#39;&#39;&#39;
+    逐位相加其ASCII码
+    &#39;&#39;&#39;</span>
+    s <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    nums <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> s0 <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>s0 <span class="token operator">==</span> <span class="token string">&#39;-&#39;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            nums <span class="token operator">+=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>s0<span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;error: &quot;</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> nums
+get_nums<span class="token punctuation">(</span><span class="token string">&quot;重庆优得利印刷有限公司&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>276879
+</code></pre><h2 id="平方取中法" tabindex="-1">平方取中法 <a class="header-anchor" href="#平方取中法" aria-hidden="true">#</a></h2><div class="language-python"><pre><code>df<span class="token punctuation">[</span><span class="token string">&#39;nums_电话&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;电话&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>get_nums<span class="token punctuation">)</span>
+df<span class="token punctuation">[</span><span class="token string">&#39;nums_电话^2&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;nums_电话&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+df<span class="token punctuation">[</span><span class="token string">&#39;nums_企业名称&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;企业名称&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>get_nums<span class="token punctuation">)</span>
+<span class="token comment"># df[&#39;nums_电话^4&#39;] = df[&#39;nums_电话^2&#39;].apply(lambda x: np.square(x))</span>
+df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>ID</th><th>企业名称</th><th>电话</th><th>企业地址</th><th>nums_电话</th><th>nums_电话^2</th><th>nums_企业名称</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>万州区永佳路万德印刷厂</td><td>15178905742</td><td>重庆市万州区双河口永佳路325号</td><td>577</td><td>332929</td><td>257952</td></tr><tr><th>1</th><td>1</td><td>覃彩虹</td><td>13594410133</td><td>重庆市万州区熊家镇古城大道296号</td><td>562</td><td>315844</td><td>94053</td></tr><tr><th>2</th><td>2</td><td>重庆优得利印刷有限公司</td><td>023-65903102</td><td>重庆市江津区双福工业园1幢1号</td><td>559</td><td>312481</td><td>276879</td></tr><tr><th>3</th><td>3</td><td>重庆市开州区森美印刷有限公司</td><td>15608330060</td><td>重庆市开州区云枫街道平桥社区桔乡路369号门市</td><td>560</td><td>313600</td><td>364365</td></tr><tr><th>4</th><td>4</td><td>吕兴华</td><td>13896015224</td><td>重庆市璧山区大路街道天星街23号</td><td>569</td><td>323761</td><td>63703</td></tr></tbody></table><div class="language-python"><pre><code><span class="token keyword">def</span> <span class="token function">get_mid</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&#39;&#39;&#39;
+    取中间三位数作为地址
+    &#39;&#39;&#39;</span>
+    <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">1000</span>
+</code></pre></div><div class="language-python"><pre><code>df<span class="token punctuation">[</span><span class="token string">&#39;adr_电话&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;nums_电话^2&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>get_mid<span class="token punctuation">)</span>
+df<span class="token punctuation">[</span><span class="token string">&#39;adr_企业名称&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;nums_企业名称&#39;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>get_mid<span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+</code></pre></div><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>ID</th><th>企业名称</th><th>电话</th><th>企业地址</th><th>nums_电话</th><th>nums_电话^2</th><th>nums_企业名称</th><th>adr_电话</th><th>adr_企业名称</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>万州区永佳路万德印刷厂</td><td>15178905742</td><td>重庆市万州区双河口永佳路325号</td><td>577</td><td>332929</td><td>257952</td><td>292</td><td>795</td></tr><tr><th>1</th><td>1</td><td>覃彩虹</td><td>13594410133</td><td>重庆市万州区熊家镇古城大道296号</td><td>562</td><td>315844</td><td>94053</td><td>584</td><td>405</td></tr><tr><th>2</th><td>2</td><td>重庆优得利印刷有限公司</td><td>023-65903102</td><td>重庆市江津区双福工业园1幢1号</td><td>559</td><td>312481</td><td>276879</td><td>248</td><td>687</td></tr><tr><th>3</th><td>3</td><td>重庆市开州区森美印刷有限公司</td><td>15608330060</td><td>重庆市开州区云枫街道平桥社区桔乡路369号门市</td><td>560</td><td>313600</td><td>364365</td><td>360</td><td>436</td></tr><tr><th>4</th><td>4</td><td>吕兴华</td><td>13896015224</td><td>重庆市璧山区大路街道天星街23号</td><td>569</td><td>323761</td><td>63703</td><td>376</td><td>370</td></tr><tr><th>...</th><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr><tr><th>95</th><td>95</td><td>重庆涵天包装印务有限公司</td><td>023-72231721</td><td>重庆市涪陵区太极大道34号负一楼</td><td>558</td><td>311364</td><td>318409</td><td>136</td><td>840</td></tr><tr><th>96</th><td>96</td><td>垫江县金辉印刷厂</td><td>13110182246</td><td>重庆市垫江县周嘉镇迎春路</td><td>557</td><td>310249</td><td>209484</td><td>24</td><td>948</td></tr><tr><th>97</th><td>97</td><td>重庆凯翔包装印务有限公司</td><td>13709401186</td><td>重庆市永川区大安街道办事处大安工业园区</td><td>568</td><td>322624</td><td>321198</td><td>262</td><td>119</td></tr><tr><th>98</th><td>98</td><td>丰都县蓝图印务有限公司</td><td>15803661811</td><td>重庆市丰都县三合街道商业二路117号附2号</td><td>568</td><td>322624</td><td>284565</td><td>262</td><td>456</td></tr><tr><th>99</th><td>99</td><td>重庆毅然包装印刷有限公司</td><td>13509402066</td><td>重庆市綦江区文龙街道大田湾6号</td><td>564</td><td>318096</td><td>323964</td><td>809</td><td>396</td></tr></tbody></table><h2 id="除留余数法" tabindex="-1">除留余数法 <a class="header-anchor" href="#除留余数法" aria-hidden="true">#</a></h2><div class="language-python"><pre><code>df<span class="token punctuation">[</span><span class="token string">&#39;adr_电话_1&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;nums_电话^2&#39;</span><span class="token punctuation">]</span><span class="token operator">%</span><span class="token number">1007</span>
+df<span class="token punctuation">[</span><span class="token string">&#39;adr_企业名称_1&#39;</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">&#39;nums_企业名称&#39;</span><span class="token punctuation">]</span><span class="token operator">%</span><span class="token number">1007</span>
+df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>ID</th><th>企业名称</th><th>电话</th><th>企业地址</th><th>nums_电话</th><th>nums_电话^2</th><th>nums_企业名称</th><th>adr_电话</th><th>adr_企业名称</th><th>adr_电话_1</th><th>adr_企业名称_1</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>万州区永佳路万德印刷厂</td><td>15178905742</td><td>重庆市万州区双河口永佳路325号</td><td>577</td><td>332929</td><td>257952</td><td>292</td><td>795</td><td>619</td><td>160</td></tr><tr><th>1</th><td>1</td><td>覃彩虹</td><td>13594410133</td><td>重庆市万州区熊家镇古城大道296号</td><td>562</td><td>315844</td><td>94053</td><td>584</td><td>405</td><td>653</td><td>402</td></tr><tr><th>2</th><td>2</td><td>重庆优得利印刷有限公司</td><td>023-65903102</td><td>重庆市江津区双福工业园1幢1号</td><td>559</td><td>312481</td><td>276879</td><td>248</td><td>687</td><td>311</td><td>961</td></tr><tr><th>3</th><td>3</td><td>重庆市开州区森美印刷有限公司</td><td>15608330060</td><td>重庆市开州区云枫街道平桥社区桔乡路369号门市</td><td>560</td><td>313600</td><td>364365</td><td>360</td><td>436</td><td>423</td><td>838</td></tr><tr><th>4</th><td>4</td><td>吕兴华</td><td>13896015224</td><td>重庆市璧山区大路街道天星街23号</td><td>569</td><td>323761</td><td>63703</td><td>376</td><td>370</td><td>514</td><td>262</td></tr></tbody></table><h2 id="创建哈希表-分别使用开发地址与公共溢出区解决冲突" tabindex="-1">创建哈希表(分别使用开发地址与公共溢出区解决冲突) <a class="header-anchor" href="#创建哈希表-分别使用开发地址与公共溢出区解决冲突" aria-hidden="true">#</a></h2><div class="language-python"><pre><code><span class="token comment">#初始化为全0</span>
+
+<span class="token comment"># 开放地址法所使用的hash</span>
+hash_map_tele <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">32000</span><span class="token punctuation">)</span>
+hash_map_name <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">8000</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 公共溢出区所使用的hash</span>
+hash_map_tele_1 <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">2100</span><span class="token punctuation">)</span>
+hash_map_name_1 <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">2100</span><span class="token punctuation">)</span>
+
+<span class="token builtin">len</span><span class="token punctuation">(</span>hash_map_tele<span class="token punctuation">)</span>
+</code></pre></div><pre><code>400000
+</code></pre><div class="language-python"><pre><code><span class="token comment">#探测开放地址法</span>
+<span class="token keyword">def</span> <span class="token function">create_hash_map_tele</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> adr<span class="token punctuation">,</span> df_ID<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        adr <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;error: &#39;</span><span class="token punctuation">,</span> adr<span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>hash_map_tele<span class="token punctuation">[</span>adr<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        adr <span class="token operator">+=</span> <span class="token number">800</span>
+    hash_map_tele<span class="token punctuation">[</span>adr<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">create_hash_map_name</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> adr<span class="token punctuation">,</span> df_ID<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        adr <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;error: &#39;</span><span class="token punctuation">,</span> adr<span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>hash_map_name<span class="token punctuation">[</span>adr<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        adr <span class="token operator">+=</span> <span class="token number">800</span>
+    hash_map_name<span class="token punctuation">[</span>adr<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+
+<span class="token comment">#使用公共溢出区</span>
+count1 <span class="token operator">=</span> <span class="token number">0</span>
+count2 <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">def</span> <span class="token function">create_hash_map_tele1</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> adr<span class="token punctuation">,</span> df_ID<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> count1
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_tele_1<span class="token punctuation">[</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        hash_map_tele_1<span class="token punctuation">[</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        hash_map_tele_1<span class="token punctuation">[</span><span class="token number">1100</span> <span class="token operator">+</span> count1<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+        count1 <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">create_hash_map_name1</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> adr<span class="token punctuation">,</span> df_ID<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> count2
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_name_1<span class="token punctuation">[</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        hash_map_name_1<span class="token punctuation">[</span>x<span class="token punctuation">[</span>adr<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        hash_map_name_1<span class="token punctuation">[</span><span class="token number">1100</span> <span class="token operator">+</span> count2<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">[</span>df_ID<span class="token punctuation">]</span>
+        count2 <span class="token operator">+=</span> <span class="token number">1</span>
+
+</code></pre></div><div class="language-python"><pre><code>df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>create_hash_map_tele<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&#39;adr_电话&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ID&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>create_hash_map_name<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&#39;adr_企业名称&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ID&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>create_hash_map_tele1<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&#39;adr_电话_1&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ID&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>create_hash_map_name1<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&#39;adr_企业名称_1&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ID&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+hash_map_tele
+</code></pre></div><pre><code>array([0., 0., 0., ..., 0., 0., 0.])
+</code></pre><h2 id="查找流程-平方取中-开发地址探测法-method1" tabindex="-1">查找流程(平方取中+开发地址探测法)-method1 <a class="header-anchor" href="#查找流程-平方取中-开发地址探测法-method1" aria-hidden="true">#</a></h2><div class="language-python"><pre><code><span class="token comment"># 查找</span>
+search_method <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你查找关键词的类型：1，电话查找；2，企业名称查找&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>search_method <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tele <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你要查找对象的电话号码：&quot;</span><span class="token punctuation">)</span>
+    tele <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>tele<span class="token punctuation">)</span>
+    time_start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    nums <span class="token operator">=</span> get_mid<span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>get_nums<span class="token punctuation">(</span>tele<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----base_nums-----\n&quot;</span><span class="token punctuation">,</span>nums<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----hash_map_tele_value-----\n&quot;</span><span class="token punctuation">,</span> hash_map_tele<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----开始查找-----&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">&#39;电话&#39;</span><span class="token punctuation">]</span><span class="token punctuation">[</span>hash_map_tele<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!=</span> tele<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># print(&quot;-----tele-----\n&quot;, df[&#39;电话&#39;][hash_map_tele[nums]])</span>
+        nums <span class="token operator">+=</span> <span class="token number">800</span>
+        <span class="token comment"># print(&#39;-----add_nums-----\n&#39;, nums)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&gt;=</span> <span class="token number">32000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;查找错误：无该信息&#39;</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    time_end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&lt;</span> <span class="token number">32000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------你查找的信息如下：---------------\n&quot;</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>hash_map_tele<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------本次查找耗时：---------------\n&quot;</span><span class="token punctuation">,</span>time_end<span class="token operator">-</span>time_start<span class="token punctuation">)</span>
+<span class="token keyword">elif</span><span class="token punctuation">(</span>search_method <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你要查找对象的企业名称：&quot;</span><span class="token punctuation">)</span>
+    time_start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    nums <span class="token operator">=</span> get_mid<span class="token punctuation">(</span>get_nums<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----base_nums-----\n&quot;</span><span class="token punctuation">,</span>nums<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----hash_map_tele_value-----\n&quot;</span><span class="token punctuation">,</span> hash_map_name<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----开始查找-----&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">&#39;企业名称&#39;</span><span class="token punctuation">]</span><span class="token punctuation">[</span>hash_map_name<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!=</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># print(&quot;-----tele-----\n&quot;, df[&#39;企业名称&#39;][hash_map_name[nums]])</span>
+        nums <span class="token operator">+=</span> <span class="token number">800</span>
+        <span class="token comment"># print(&#39;-----add_nums-----\n&#39;, nums)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&gt;=</span> <span class="token number">8000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;查找错误：无该信息&#39;</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    time_end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&lt;</span> <span class="token number">8000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------你查找的信息如下：---------------\n&quot;</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>hash_map_name<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------本次查找耗时：---------------\n&quot;</span><span class="token punctuation">,</span>time_end<span class="token operator">-</span>time_start<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;请选择正确的查找方式！&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>-----base_nums-----
+ 370
+-----hash_map_tele_value-----
+ 4.0
+-----开始查找-----
+---------------你查找的信息如下：---------------
+ ID                          4
+企业名称                      吕兴华
+电话                13896015224
+企业地址         重庆市璧山区大路街道天星街23号
+nums_电话                   569
+nums_电话^2              323761
+adr_电话                    376
+nums_企业名称               63703
+adr_企业名称                  370
+Name: 4, dtype: object
+---------------查找耗时：---------------
+ 0.0009999275207519531
+</code></pre><h2 id="查找流程-除留余数法-公共溢出法-method2" tabindex="-1">查找流程(除留余数法+公共溢出法)-method2 <a class="header-anchor" href="#查找流程-除留余数法-公共溢出法-method2" aria-hidden="true">#</a></h2><div class="language-python"><pre><code><span class="token comment"># 查找</span>
+search_method <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你查找关键词的类型：1，电话查找；2，企业名称查找&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>search_method <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tele <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你要查找对象的电话号码：&quot;</span><span class="token punctuation">)</span>
+    tele <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>tele<span class="token punctuation">)</span>
+    time_start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    nums <span class="token operator">=</span> get_nums<span class="token punctuation">(</span>tele<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">1007</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----base_nums-----\n&quot;</span><span class="token punctuation">,</span>nums<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----hash_map_tele_value-----\n&quot;</span><span class="token punctuation">,</span> hash_map_tele_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----开始查找-----&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">&#39;电话&#39;</span><span class="token punctuation">]</span><span class="token punctuation">[</span>hash_map_tele_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!=</span> tele<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># print(&quot;-----tele-----\n&quot;, df[&#39;电话&#39;][hash_map_tele_1[nums]])</span>
+        nums <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token comment"># print(&#39;-----add_nums-----\n&#39;, nums)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&gt;=</span> <span class="token number">2100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;查找错误：无该信息&#39;</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    time_end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&lt;</span> <span class="token number">2100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------你查找的信息如下：---------------\n&quot;</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>hash_map_tele_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------本次查找耗时：---------------\n&quot;</span><span class="token punctuation">,</span>time_end<span class="token operator">-</span>time_start<span class="token punctuation">)</span>
+<span class="token keyword">elif</span><span class="token punctuation">(</span>search_method <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入你要查找对象的企业名称：&quot;</span><span class="token punctuation">)</span>
+    time_start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    nums <span class="token operator">=</span> get_nums<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">1007</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----base_nums-----\n&quot;</span><span class="token punctuation">,</span>nums<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----hash_map_tele_value-----\n&quot;</span><span class="token punctuation">,</span> hash_map_name_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;-----开始查找-----&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">&#39;企业名称&#39;</span><span class="token punctuation">]</span><span class="token punctuation">[</span>hash_map_name_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">!=</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># print(&quot;-----tele-----\n&quot;, df[&#39;企业名称&#39;][hash_map_name_1[nums]])</span>
+        nums <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token comment"># print(&#39;-----add_nums-----\n&#39;, nums)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&gt;=</span> <span class="token number">2100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;查找错误：无该信息&#39;</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    time_end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums <span class="token operator">&lt;</span> <span class="token number">2100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------你查找的信息如下：---------------\n&quot;</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>hash_map_name_1<span class="token punctuation">[</span>nums<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;---------------本次查找耗时：---------------\n&quot;</span><span class="token punctuation">,</span>time_end<span class="token operator">-</span>time_start<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;请选择正确的查找方式！&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>-----base_nums-----
+ 262
+-----hash_map_tele_value-----
+ 4.0
+-----开始查找-----
+---------------你查找的信息如下：---------------
+ ID                           4
+企业名称                       吕兴华
+电话                 13896015224
+企业地址          重庆市璧山区大路街道天星街23号
+nums_电话                    569
+nums_电话^2               323761
+nums_企业名称                63703
+adr_电话                     376
+adr_企业名称                   370
+adr_电话_1                   514
+adr_企业名称_1                 262
+Name: 4, dtype: object
+---------------本次查找耗时：---------------
+ 0.005001544952392578
+</code></pre><h2 id="性能分析" tabindex="-1">性能分析 <a class="header-anchor" href="#性能分析" aria-hidden="true">#</a></h2><div class="language-python"><pre><code>df<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre></div><table border="1" class="dataframe"><thead><tr style="text-align:right;"><th></th><th>ID</th><th>企业名称</th><th>电话</th><th>企业地址</th><th>nums_电话</th><th>nums_电话^2</th><th>nums_企业名称</th><th>adr_电话</th><th>adr_企业名称</th><th>adr_电话_1</th><th>adr_企业名称_1</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>万州区永佳路万德印刷厂</td><td>15178905742</td><td>重庆市万州区双河口永佳路325号</td><td>577</td><td>332929</td><td>257952</td><td>292</td><td>795</td><td>619</td><td>160</td></tr><tr><th>1</th><td>1</td><td>覃彩虹</td><td>13594410133</td><td>重庆市万州区熊家镇古城大道296号</td><td>562</td><td>315844</td><td>94053</td><td>584</td><td>405</td><td>653</td><td>402</td></tr><tr><th>2</th><td>2</td><td>重庆优得利印刷有限公司</td><td>023-65903102</td><td>重庆市江津区双福工业园1幢1号</td><td>559</td><td>312481</td><td>276879</td><td>248</td><td>687</td><td>311</td><td>961</td></tr><tr><th>3</th><td>3</td><td>重庆市开州区森美印刷有限公司</td><td>15608330060</td><td>重庆市开州区云枫街道平桥社区桔乡路369号门市</td><td>560</td><td>313600</td><td>364365</td><td>360</td><td>436</td><td>423</td><td>838</td></tr><tr><th>4</th><td>4</td><td>吕兴华</td><td>13896015224</td><td>重庆市璧山区大路街道天星街23号</td><td>569</td><td>323761</td><td>63703</td><td>376</td><td>370</td><td>514</td><td>262</td></tr><tr><th>5</th><td>5</td><td>重庆海渝包装印刷有限公司</td><td>13883451070</td><td>重庆市璧山区奥康工业园金剑路271号</td><td>568</td><td>322624</td><td>323605</td><td>262</td><td>360</td><td>384</td><td>358</td></tr><tr><th>6</th><td>6</td><td>重庆鼎鸿印务有限公司</td><td>17782279989</td><td>重庆市永川区来龙四路36号</td><td>597</td><td>356409</td><td>292462</td><td>640</td><td>246</td><td>938</td><td>432</td></tr><tr><th>7</th><td>7</td><td>重庆奔速彩印有限公司</td><td>023-62802235</td><td>重庆市九龙坡区歇台子渝州路100号附1-5-1号</td><td>561</td><td>314721</td><td>274268</td><td>472</td><td>426</td><td>537</td><td>364</td></tr><tr><th>8</th><td>8</td><td>重庆市永川区木森印刷有限公司</td><td>18580704257</td><td>重庆市永川区三教镇三川路216号</td><td>575</td><td>330625</td><td>361502</td><td>62</td><td>150</td><td>329</td><td>996</td></tr><tr><th>9</th><td>9</td><td>重庆梧桐树印务有限公司</td><td>023-67980980</td><td>重庆市渝中区张家花园街206号</td><td>580</td><td>336400</td><td>291369</td><td>640</td><td>136</td><td>62</td><td>346</td></tr></tbody></table><div class="language-python"><pre><code><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;表长为：&quot;</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>表长为： 754
+</code></pre><h3 id="_32000与8000的来历" tabindex="-1">32000与8000的来历 <a class="header-anchor" href="#_32000与8000的来历" aria-hidden="true">#</a></h3><div class="language-python"><pre><code><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;重复元素最多次数fen&#39;bie为：&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        index <span class="token operator">=</span> <span class="token number">800</span><span class="token operator">*</span>i <span class="token operator">+</span> j
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_tele<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flag <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;tele_i:&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        index <span class="token operator">=</span> <span class="token number">800</span><span class="token operator">*</span>i <span class="token operator">+</span> j
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_name<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flag <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;name_i:&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+</code></pre></div><pre><code>tele_i: 39
+name_i: 9
+</code></pre><h3 id="计算method1的asl" tabindex="-1">计算method1的ASL <a class="header-anchor" href="#计算method1的asl" aria-hidden="true">#</a></h3><div class="language-python"><pre><code>c1 <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># 统计总的查找次数</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        index <span class="token operator">=</span> <span class="token number">800</span><span class="token operator">*</span>i <span class="token operator">+</span> j
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_tele<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            c1 <span class="token operator">+=</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;method1-tele-asl:&#39;</span><span class="token punctuation">,</span> c1<span class="token operator">/</span><span class="token number">754</span><span class="token punctuation">)</span>
+c2 <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># 统计总的查找次数</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        index <span class="token operator">=</span> <span class="token number">800</span><span class="token operator">*</span>i <span class="token operator">+</span> j
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hash_map_name<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            c2 <span class="token operator">+=</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;method1-name-asl:&#39;</span><span class="token punctuation">,</span> c2<span class="token operator">/</span><span class="token number">754</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>method1-tele-asl: 12.10079575596817
+method1-name-asl: 1.6498673740053051
+</code></pre><h3 id="计算method2的asl" tabindex="-1">计算method2的ASL <a class="header-anchor" href="#计算method2的asl" aria-hidden="true">#</a></h3><div class="language-python"><pre><code>df1 <span class="token operator">=</span> df<span class="token punctuation">.</span>adr_电话_1<span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token keyword">print</span><span class="token punctuation">(</span>df1<span class="token punctuation">)</span>
+</code></pre></div><pre><code>514    39
+916    33
+329    32
+47     31
+767    31
+187    29
+216    29
+473    28
+619    27
+646    26
+384    26
+62     26
+9      25
+372    25
+175    21
+530    20
+6      20
+852    19
+256    18
+130    18
+780    17
+690    17
+343    16
+917    16
+653    15
+537    15
+685    13
+423    12
+513    11
+891    11
+201    10
+771    10
+311     9
+859     7
+994     7
+93      6
+386     5
+568     5
+938     5
+206     4
+28      4
+688     3
+890     3
+788     2
+119     2
+590     1
+309     1
+752     1
+494     1
+894     1
+434     1
+Name: adr_电话_1, dtype: int64
+</code></pre><div class="language-python"><pre><code>df2 <span class="token operator">=</span> df<span class="token punctuation">.</span>adr_企业名称_1<span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token keyword">print</span><span class="token punctuation">(</span>df2<span class="token punctuation">)</span>
+</code></pre></div><pre><code>68      6
+90      5
+406     5
+231     4
+979     4
+       ..
+439     1
+768     1
+445     1
+446     1
+1006    1
+Name: adr_企业名称_1, Length: 516, dtype: int64
+</code></pre><div class="language-python"><pre><code><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;有多少个元素在method2-tele基础表中，即只需查一次：&quot;</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>df1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;有多少个元素在method2-name基础表中，即只需查一次：&quot;</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>df2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>有多少个元素在method2-tele基础表中，即只需查一次： 51
+有多少个元素在method2-name基础表中，即只需查一次： 516
+</code></pre><div class="language-python"><pre><code><span class="token comment"># 基本表中的元素只需查一次，溢出区的元素和顺序表的查找次数是一样的，所以可以使用等差数列的计算公式进行计算，不过需要注意的就是溢出区的查找次数是从2开始的</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;method2-tele-asl:&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">51</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">703</span><span class="token operator">*</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">703</span><span class="token operator">*</span><span class="token number">702</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">754</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;method2-name-asl:&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">516</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">238</span><span class="token operator">*</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">238</span><span class="token operator">*</span><span class="token number">237</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">754</span><span class="token punctuation">)</span>
+</code></pre></div><pre><code>method2-tele-asl: 329.19098143236073
+method2-name-asl: 38.720159151193634
+</code></pre><h2 id="最终得出结果" tabindex="-1">最终得出结果 <a class="header-anchor" href="#最终得出结果" aria-hidden="true">#</a></h2><ul><li>method1-tele-asl: 12.10079575596817</li><li>method1-name-asl: 1.6498673740053051</li><li>method2-tele-asl: 329.19098143236073</li><li>method2-name-asl: 38.720159151193634</li></ul><h2 id="分析" tabindex="-1">分析 <a class="header-anchor" href="#分析" aria-hidden="true">#</a></h2><p>总的来说，重复元素的个数越多，哈希查找的效率就相应越低而法1的开放地址探测法对冲突的解决在本题中查找效率是明显优于公共溢出法的，但相应的占据了更大的存储空间至于平方去中法以及除留余数法在本题中映射出来的地址重复个数基本一致，故不相上下。</p></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"151bbc08\",\"推荐_09散列表实现查找.md\":\"38d140f2\",\"推荐_index.md\":\"76b6d760\",\"汇总分类_ai相关_index.md\":\"65402f70\",\"汇总分类_css相关_index.md\":\"cde849d5\",\"汇总分类_javascript_index.md\":\"53d71f08\",\"汇总分类_ui组件库_index.md\":\"bd4c1406\",\"汇总分类_index.md\":\"f8755ba7\",\"汇总分类_前端框架_index.md\":\"82511359\",\"汇总分类_后端储备_index.md\":\"8ec25ed6\",\"汇总分类_数据相关_index.md\":\"643b32aa\",\"汇总分类_算法与数据结构_01基础概念.md\":\"e0e2c30c\",\"汇总分类_算法与数据结构_02线性表.md\":\"0d4103db\",\"汇总分类_算法与数据结构_03栈和队列.md\":\"67f92f7e\",\"汇总分类_算法与数据结构_04数组.md\":\"b5457006\",\"汇总分类_算法与数据结构_05树.md\":\"7348fd9d\",\"汇总分类_算法与数据结构_06图.md\":\"8634707d\",\"汇总分类_算法与数据结构_07查找.md\":\"b40eee0c\",\"汇总分类_算法与数据结构_08排序.md\":\"60a579fc\",\"汇总分类_算法与数据结构_09散列表实现查找.md\":\"e0303ffa\",\"汇总分类_算法与数据结构_index.md\":\"4b90632b\",\"汇总分类_计算机基础知识_index.md\":\"00643cce\"}")</script>
+    <script type="module" async src="/assets/app.021c7b83.js"></script>
+    
+  </body>
+</html>
