@@ -1,0 +1,1 @@
+import{_ as t,r as a,c as r,b as l,a as o,o as _}from"./app.f0844215.js";const T='{"title":"","description":"","frontmatter":{"sidebar":false},"headers":[],"relativePath":"\u63A8\u8350/index.md","lastUpdated":1647510688559}',i={},s=o("",1);function n(c,p,m,d,f,h){const e=a("Comment");return _(),r("div",null,[s,l(e)])}var u=t(i,[["render",n]]);export{T as __pageData,u as default};
